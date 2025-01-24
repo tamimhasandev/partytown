@@ -1,28 +1,26 @@
-# PartyTown for WordPress
+=== PartyTown for WordPress ===
+Contributors: Tamim Hasan
+Tags: performance, optimization, web workers, third-party scripts, Google Analytics, Google Tag Manager
+Requires at least: 5.0
+Tested up to: 6.0
+Stable tag: 1.0.0
+License: GPL2
+License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
-**PartyTown** is a performance-boosting WordPress plugin that optimizes third-party scripts by offloading them to web workers. This reduces main thread blocking, improving site speed and reducing load times. With a simple toggle in the settings, you can enable or disable the Partytown library to optimize scripts like Google Analytics, Google Tag Manager, and more—without writing any code.
+== Description ==
 
-## **Plugin Information**
+**PartyTown** is a performance-boosting WordPress plugin that offloads third-party scripts to web workers, improving site speed and reducing load times. With a simple toggle in the settings, you can enable or disable the Partytown library to optimize scripts like Google Analytics, Google Tag Manager, and more—without writing any code.
 
-- **Plugin Name**: PartyTown
-- **Plugin URI**: [https://www.tamimhasan.com/partytown](https://www.tamimhasan.com/partytown)
-- **Description**: A plugin to optimize third-party scripts using Partytown.
-- **Version**: 1.0.0
-- **Author**: Md Tamim Hasan
-- **Author URI**: [https://www.tamimhasan.com](https://www.tamimhasan.com)
-- **License**: GPL2
-- **Text Domain**: partytown
-
-## **Features**
+== Features ==
 
 - **Script Optimization**: Automatically offloads third-party scripts to Web Workers, reducing main thread blocking and improving page performance.
 - **Easy Setup**: Toggle the Partytown library on or off via the plugin's settings interface.
 - **Settings Page**: Simple, intuitive settings page in the WordPress admin to configure the plugin.
 - **Uninstall**: Automatically deletes the Partytown upload directory upon plugin uninstall.
 
-## **Installation**
+== Installation ==
 
-### 1. Upload Plugin
+1. Upload Plugin
 
 - Download the plugin ZIP file.
 - Go to the WordPress Admin dashboard.
@@ -30,29 +28,25 @@
 - Click **Upload Plugin** and select the ZIP file.
 - Install and activate the plugin.
 
-### 2. Manual Installation
+2. Manual Installation
 
 - Upload the `partytown` folder to the `/wp-content/plugins/` directory.
 - Activate the plugin through the **Plugins** menu in WordPress.
 
-## **How to Use**
+== How to Use ==
 
-To start optimizing your website with PartyTown, follow these simple steps:
-
-### 1. **Enable PartyTown**
+1. **Enable PartyTown**:
 
 - Go to the WordPress admin dashboard.
 - Navigate to **Settings > PartyTown**.
 - In the **General Settings** section, check the box to **Enable PartyTown Library**.
 - Save your settings.
 
-### 2. **Use `type='text/partytown'` in Your Scripts**
+2. **Use `type='text/partytown'` in Your Scripts**:
 
 After enabling PartyTown, update your third-party script tags to use the `type="text/partytown"` attribute. This will offload the scripts to web workers, reducing their impact on the main thread and improving website performance.
 
-For example, for **Google Analytics** and **Google Tag Manager**, follow the steps below:
-
-### Example: Google Tag Manager with Google Analytics
+Example: Google Tag Manager with Google Analytics
 
 ```html
 <script type="text/partytown">
@@ -70,25 +64,19 @@ For example, for **Google Analytics** and **Google Tag Manager**, follow the ste
 
   gtag('config', 'UA-XXXXXXX-X');  // Replace with your Google Analytics ID
 </script>
-```
-
 By using type="text/partytown", PartyTown offloads these scripts to web workers, enabling them to run in the background without blocking the main thread. This results in faster page load times and improved performance.
 
-## Uninstalling the Plugin
-
+== Uninstalling the Plugin ==
 To uninstall the plugin:
+ - Navigate to the Plugins section in WordPress.
+ - Deactivate and delete the PartyTown plugin. 
+ - The plugin will automatically remove the Partytown upload directory created during activation. However, if you need to remove it manually, you can do so from the file system.
 
-- Navigate to the Plugins section in WordPress.
-- Deactivate and delete the PartyTown plugin.
-- The plugin will automatically remove the Partytown upload directory created during activation. However, if you need to remove it manually, you can do so from the file system.
+== Support ==
+If you encounter any issues or need support, please reach out to us at support@tamimhasan.com.
 
-## Support
+== Changelog ==
 
-If you encounter any issues or need support, please reach out to us at partytown@tamimhasan.com
-
-## Changelog
-
-### 1.0.0
-
+= 1.0.0 =
 - Initial release of the PartyTown plugin for WordPress.
 - Added script optimization for third-party scripts using Web Workers.

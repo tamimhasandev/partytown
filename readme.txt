@@ -1,11 +1,14 @@
-=== PartyTown for WordPress ===
-Contributors: Tamim Hasan
-Tags: performance, optimization, web workers, third-party scripts, Google Analytics, Google Tag Manager
+=== PartyTown for WP ===
+Contributors: tamimhasandev
+Tags: performance, optimization, web workers, Google Analytics, Google Tag Manager
 Requires at least: 5.0
 Tested up to: 6.0
+Requires PHP: 7.0
 Stable tag: 1.0.0
 License: GPL2
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
+
+Short Description: Optimize third-party scripts by offloading them to web workers with PartyTown.
 
 == Description ==
 
@@ -75,8 +78,22 @@ To uninstall the plugin:
 == Support ==
 If you encounter any issues or need support, please reach out to us at support@tamimhasan.com.
 
+== Frequently Asked Questions ==
+
+= How do I enable PartyTown? =
+
+Go to the WordPress admin dashboard, navigate to **Settings > PartyTown**, and check the box to enable the PartyTown Library. Then save your settings.
+
+== Upgrade Notice ==
+
+= 1.0.0 =
+Initial release of PartyTown plugin for WordPress.
+
 == Changelog ==
 
 = 1.0.0 =
 - Initial release of the PartyTown plugin for WordPress.
 - Added script optimization for third-party scripts using Web Workers.
+
+== Donate ==
+Support the development of PartyTown by buying me a coffee: https://buymeacoffee.com/tamimhasan

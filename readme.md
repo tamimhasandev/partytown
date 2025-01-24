@@ -84,7 +84,7 @@ To uninstall the plugin:
 
 ## Support
 
-If you encounter any issues or need support, please reach out to us at partytown@tamimhasan.com
+If you encounter any issues or need support, please reach out to us at support@tamimhasan.com
 
 ## Changelog
 

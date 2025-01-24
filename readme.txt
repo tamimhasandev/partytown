@@ -1,8 +1,9 @@
-=== PartyTown for WP ===
+=== PartyTown ===
 Contributors: tamimhasandev
+Donate link: https://buymeacoffee.com/tamimhasan
 Tags: performance, optimization, web workers, Google Analytics, Google Tag Manager
 Requires at least: 5.0
-Tested up to: 6.0
+Tested up to: 6.7.1
 Requires PHP: 7.0
 Stable tag: 1.0.0
 License: GPL2
@@ -96,4 +97,5 @@ Initial release of PartyTown plugin for WordPress.
 - Added script optimization for third-party scripts using Web Workers.
 
 == Donate ==
-Support the development of PartyTown by buying me a coffee: https://buymeacoffee.com/tamimhasan
+
+Support the development of PartyTown by buying me a coffee: [https://buymeacoffee.com/tamimhasan](https://buymeacoffee.com/tamimhasan)

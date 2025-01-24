@@ -12,31 +12,45 @@ function delete_partytown_dir( $dir ) {
 
     $files = array_diff( scandir( $dir ), array( '.', '..' ) );
 
+    // Initialize the WP_Filesystem object
+    global $wp_filesystem;
+    if ( ! is_object( $wp_filesystem ) ) {
+        require_once ABSPATH . '/wp-admin/includes/file.php';
+        WP_Filesystem();
+    }
+
     foreach ( $files as $file ) {
         $file_path = $dir . DIRECTORY_SEPARATOR . $file;
         if ( is_dir( $file_path ) ) {
             delete_partytown_dir( $file_path );
         } else {
-            unlink( $file_path );
+            $wp_filesystem->delete( $file_path ); // Using WP_Filesystem to delete the file
         }
     }
 
-    rmdir( $dir );
+    // Use WP_Filesystem to delete the directory
+    $wp_filesystem->rmdir( $dir ); // Using WP_Filesystem to remove the directory
 }
 
 function copy_partytown_dir( $src, $dst ) {
     if ( ! is_dir( $src ) ) {
         // Log error only if WP_DEBUG is true
         if ( defined( 'WP_DEBUG' ) && WP_DEBUG ) {
-            error_log( 'Source directory does not exist: ' . $src );
+
         }
         return;
     }
 
-    if ( ! is_dir( $dst ) && ! mkdir( $dst, 0755, true ) ) {
+    // Initialize the WP_Filesystem object
+    global $wp_filesystem;
+    if ( ! is_object( $wp_filesystem ) ) {
+        require_once ABSPATH . '/wp-admin/includes/file.php';
+        WP_Filesystem();
+    }
+
+    if ( ! is_dir( $dst ) && ! $wp_filesystem->mkdir( $dst, 0755 ) ) { // Using WP_Filesystem to create the directory
         // Log error only if WP_DEBUG is true
         if ( defined( 'WP_DEBUG' ) && WP_DEBUG ) {
-            error_log( 'Failed to create directory: ' . $dst );
         }
         return;
     }
@@ -49,7 +63,7 @@ function copy_partytown_dir( $src, $dst ) {
             if ( is_dir( $src_file ) ) {
                 copy_partytown_dir( $src_file, $dst_file );
             } else {
-                copy( $src_file, $dst_file );
+                $wp_filesystem->copy( $src_file, $dst_file ); // Using WP_Filesystem to copy files
             }
         }
     }
@@ -63,10 +77,16 @@ register_activation_hook( PLUGIN_FILE_URL, function() {
         delete_partytown_dir( PARTYTOWN_UPLOAD_DIR );
     }
 
-    if ( ! mkdir( PARTYTOWN_UPLOAD_DIR, 0755, true ) && ! is_dir( PARTYTOWN_UPLOAD_DIR ) ) {
+    // Initialize the WP_Filesystem object
+    global $wp_filesystem;
+    if ( ! is_object( $wp_filesystem ) ) {
+        require_once ABSPATH . '/wp-admin/includes/file.php';
+        WP_Filesystem();
+    }
+
+    if ( ! is_dir( PARTYTOWN_UPLOAD_DIR ) && ! $wp_filesystem->mkdir( PARTYTOWN_UPLOAD_DIR, 0755 ) ) { // Using WP_Filesystem to create the directory
         // Log error only if WP_DEBUG is true
         if ( defined( 'WP_DEBUG' ) && WP_DEBUG ) {
-            error_log( 'Failed to create directory: ' . PARTYTOWN_UPLOAD_DIR );
         }
         return;
     }
@@ -77,12 +97,10 @@ register_activation_hook( PLUGIN_FILE_URL, function() {
         copy_partytown_dir( $source, PARTYTOWN_UPLOAD_DIR );
         // Log success only if WP_DEBUG is true
         if ( defined( 'WP_DEBUG' ) && WP_DEBUG ) {
-            error_log( 'Successfully copied files to: ' . PARTYTOWN_UPLOAD_DIR );
         }
     } else {
         // Log error only if WP_DEBUG is true
         if ( defined( 'WP_DEBUG' ) && WP_DEBUG ) {
-            error_log( 'Source directory does not exist: ' . $source );
         }
     }
 });

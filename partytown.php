@@ -16,7 +16,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 // Define plugin constants.
-define( 'PARTYTOWN_VERSION', '1.0.0' );
+define( 'PARTYTOWN_VERSION', '0.11.0' );
 define( 'PARTYTOWN_PLUGIN_DIR', plugin_dir_path( __FILE__ ) );
 define( 'PARTYTOWN_PLUGIN_URL', plugin_dir_url( __FILE__ ) );
 define( 'PARTYTOWN_UPLOAD_DIR', rtrim( ABSPATH, '/' ) . '/~partytown/' );
@@ -52,12 +52,12 @@ add_action( 'wp_enqueue_scripts', function() {
 
     $partytown_url = site_url( '/~partytown/partytown.js' );
 
-    // Enqueue the Partytown library from the custom path, including version query to avoid caching.
+    // Enqueue the Partytown library with a proper version parameter.
     wp_enqueue_script(
         'partytown',
-        $partytown_url . '?v=' . PARTYTOWN_VERSION, // Adding version query
+        $partytown_url,
         [],
-        null, // Version handled by query
-        false // Load in the <head>
+        PARTYTOWN_VERSION, // Set the version parameter from the defined constant.
+        false // Load in the <head>.
     );
 } );
